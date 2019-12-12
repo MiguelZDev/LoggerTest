@@ -20,8 +20,10 @@ public class DatabaseLogger implements LoggerStrategy {
 	@Override
 	public void log(String msg, Level level) {
 		int levelInteger = 0;
+		
 		if (StringUtils.isBlank(msg))
 			throw new BelatrixException("Log message cannot be empty!");
+		
 		switch(level.toString()) {
 		  case "INFO":
 			  levelInteger = 1;
@@ -35,6 +37,7 @@ public class DatabaseLogger implements LoggerStrategy {
 		  default:
 			  levelInteger = 1;
 		}
+		
 		String message = level + DateFormat.getDateInstance(DateFormat.LONG).format(new Date()) + msg;
 		logRepository.save(message, levelInteger);
 		

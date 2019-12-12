@@ -16,4 +16,8 @@ public class ContextStrategy {
 		loggerStrategy.log(message, level);
 	}
 
+	public LoggerStrategy getLoggerStrategy() {
+		return loggerStrategy;
+	}
+	
 }
